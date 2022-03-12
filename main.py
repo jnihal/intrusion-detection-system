@@ -18,7 +18,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
-from sklearn.metrics import plot_confusion_matrix
+from sklearn.metrics import ConfusionMatrixDisplay
 
 
 def main():
@@ -149,7 +149,7 @@ def result(model, X_train, X_test, Y_train, Y_test):
     print("Report:\n", classification_report(Y_test, Y_test_prediction, zero_division=1, digits=4))
 
     # Construct a confusion matrix
-    plot_confusion_matrix(model, X_test, Y_test, normalize='true', cmap='Blues', values_format='.4f')
+    ConfusionMatrixDisplay.from_predictions(Y_test, Y_test_prediction, normalize='true', cmap='Blues', values_format='.4f')
 
     # Save the confusion matrix
     plt.savefig(str(model))
